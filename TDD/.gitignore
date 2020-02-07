@@ -60,3 +60,7 @@ crashlytics-build.properties
 
 # Visual Studio Code directory
 .vscode/
+
+# Sandbox
+[Aa]sset/Sandbox/
+[Aa]sset/Sandbox.meta
