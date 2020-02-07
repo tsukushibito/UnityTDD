@@ -62,5 +62,5 @@ crashlytics-build.properties
 .vscode/
 
 # Sandbox
-[Aa]sset/Sandbox/
-[Aa]sset/Sandbox.meta
+/[Aa]ssets/Sandbox/
+/[Aa]ssets/Sandbox.meta
