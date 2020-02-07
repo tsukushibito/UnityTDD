@@ -162,7 +162,7 @@ namespace App
 
             if (hasHandledActionInput == false)
             {
-                // Debug.unityLogger.LogWarning(LogTag, string.Format("There is no mapping data. ({0})", key.code));
+                Debug.unityLogger.LogWarning(LogTag, string.Format("There is no mapping data. ({0})", key.code));
             }
         }
 

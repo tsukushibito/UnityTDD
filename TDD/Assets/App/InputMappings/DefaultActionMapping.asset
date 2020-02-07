@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7247002862bfb342b6c26705d7ce923, type: 3}
+  m_Name: DefaultActionMapping
+  m_EditorClassIdentifier: 
+  mappingDataList:
+  - name: Attack
+    action: 2
+    keyCodeList: 0d000000
+    virtualKeyCodeList: 00000000
+  - name: Jump
+    action: 3
+    keyCodeList: 20000000
+    virtualKeyCodeList: 01000000
+  canBlockInput: 0

@@ -282,7 +282,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a26f8167959f0e41aa3bbd019c4b9c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialActionMapping: {fileID: 0}
+  initialActionMapping: {fileID: 11400000, guid: 3c652567a242eb44b841243494443af7,
+    type: 2}
   initialAxisMapping: {fileID: 0}
   virtualGamepad: {fileID: 3749633307875288040}
 --- !u!1001 &3749633307875288039
