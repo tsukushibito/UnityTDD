@@ -2,26 +2,57 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.TestTools;
 
 namespace App.Tests
 {
     public class VirtualGamepadTest
     {
-        // A Test behaves as an ordinary method
-        [Test]
-        public void VirtualGamepadTestSimplePasses()
-        {
-            // Use the Assert class to test conditions
-        }
-
-        // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-        // `yield return null;` to skip a frame.
         [UnityTest]
-        public IEnumerator VirtualGamepadTestWithEnumeratorPasses()
+        public IEnumerator VirtualButtonTest()
         {
-            // Use the Assert class to test conditions.
-            // Use yield to skip a frame.
+            var go = new GameObject("VirtualButtonTest");
+            var vb = go.AddComponent<App.VirtualButton>();
+
+            yield return null;
+
+            var esObj = GameObject.Find("EventSystem");
+            var es = esObj.GetComponent<EventSystem>();
+            var data = new PointerEventData(es);
+
+            yield return null;
+
+            Assert.IsFalse(vb.GetButton());
+            Assert.IsFalse(vb.GetButtonDown());
+            Assert.IsFalse(vb.GetButtonUp());
+
+            yield return null;
+
+            vb.OnPointerDown(data);
+            Assert.IsTrue(vb.GetButton());
+            Assert.IsTrue(vb.GetButtonDown());
+            Assert.IsFalse(vb.GetButtonUp());
+
+            yield return null;
+
+            Assert.IsFalse(vb.GetButton());
+            Assert.IsTrue(vb.GetButtonDown());
+            Assert.IsFalse(vb.GetButtonUp());
+
+            yield return null;
+
+            vb.OnPointerUp(data);
+            Assert.IsFalse(vb.GetButton());
+            Assert.IsFalse(vb.GetButtonDown());
+            Assert.IsTrue(vb.GetButtonUp());
+
+            yield return null;
+
+            Assert.IsFalse(vb.GetButton());
+            Assert.IsFalse(vb.GetButtonDown());
+            Assert.IsFalse(vb.GetButtonUp());
+
             yield return null;
         }
     }
