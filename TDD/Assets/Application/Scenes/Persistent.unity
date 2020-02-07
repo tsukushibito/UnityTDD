@@ -284,7 +284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialActionMapping: {fileID: 0}
   initialAxisMapping: {fileID: 0}
-  virtualGamepad: {fileID: 0}
+  virtualGamepad: {fileID: 3749633307875288040}
 --- !u!1001 &3749633307875288039
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -355,3 +355,15 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3749633308087459987, guid: 615329858a8583349bd93bbeb92a3195, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 615329858a8583349bd93bbeb92a3195, type: 3}
+--- !u!114 &3749633307875288040 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7466241971180643832, guid: 615329858a8583349bd93bbeb92a3195,
+    type: 3}
+  m_PrefabInstance: {fileID: 3749633307875288039}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe08fcae2e5b2c469f67181cc45fc90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -119,10 +119,5 @@ namespace App
                 leftStick.UiCamera = virtualGamepadCamera;
             }
         }
-
-        private void Update()
-        {
-            Debug.unityLogger.Log(string.Format("Holizontal: {0}, Vertical: {1}", GetAxis(VirtualAxisCode.Holizontal), GetAxis(VirtualAxisCode.Vertical)));
-        }
     }
 }

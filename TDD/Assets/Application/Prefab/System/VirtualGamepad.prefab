@@ -699,7 +699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   raycastTarget: {fileID: 6160378245082044122}
   stickImage: {fileID: 5955861570834117576}
-  stickRange: 32
+  stickRange: 64
 --- !u!1 &3749633309291319486
 GameObject:
   m_ObjectHideFlags: 0

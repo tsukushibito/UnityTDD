@@ -124,6 +124,7 @@ namespace App
             raycastTarget.OnEndDragEvent.AddListener(eventData =>
             {
                 raycastTargetRectTransform.localPosition = defaultPos;
+                stickImageRectTransform.localPosition = defaultPos;
             });
         }
     }
