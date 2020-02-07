@@ -17,8 +17,8 @@ namespace App.Tests
 
             yield return null;
 
-            var esObj = GameObject.Find("EventSystem");
-            var es = esObj.GetComponent<EventSystem>();
+            var es = EventSystem.current;
+            Assert.IsNotNull(es);
             var data = new PointerEventData(es);
 
             yield return null;
@@ -36,8 +36,8 @@ namespace App.Tests
 
             yield return null;
 
-            Assert.IsFalse(vb.GetButton());
-            Assert.IsTrue(vb.GetButtonDown());
+            Assert.IsTrue(vb.GetButton());
+            Assert.IsFalse(vb.GetButtonDown());
             Assert.IsFalse(vb.GetButtonUp());
 
             yield return null;
@@ -52,6 +52,35 @@ namespace App.Tests
             Assert.IsFalse(vb.GetButton());
             Assert.IsFalse(vb.GetButtonDown());
             Assert.IsFalse(vb.GetButtonUp());
+
+            yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator VirtualStickTest()
+        {
+            var go = new GameObject("VirtualStickTest");
+
+            yield return null;
+
+            var vgObj = GameObject.Find("VirtualGamepad");
+            Assert.IsNotNull(vgObj);
+            var vg = vgObj.GetComponent<VirtualGamepad>();
+            Assert.IsNotNull(vg);
+            var vs = vgObj.GetComponentInChildren<VirtualStick>();
+            Assert.IsNotNull(vs);
+
+            var es = EventSystem.current;
+            Assert.IsNotNull(es);
+            var data = new PointerEventData(es);
+
+            yield return null;
+
+            var h = vs.GetHolizontal();
+            Assert.AreEqual(0.0f, h);
+
+            var v = vs.GetVertical();
+            Assert.AreEqual(0.0f, v);
 
             yield return null;
         }
