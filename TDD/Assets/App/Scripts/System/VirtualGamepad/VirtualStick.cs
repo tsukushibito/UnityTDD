@@ -83,6 +83,52 @@ namespace App
         }
 
         /// <summary>
+        /// スティック初期位置を保存
+        /// </summary>
+        /// <param name="eventData"></param>
+        private void CacheDefaultPos(PointerEventData eventData)
+        {
+            defaultPos = raycastTargetRectTransform.localPosition;
+        }
+
+        /// <summary>
+        /// スティックを移動
+        /// </summary>
+        /// <param name="eventData"></param>
+        private void MoveStick(PointerEventData eventData)
+        {
+            Vector2 localPos;
+            var result = RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                rectTransform,
+                eventData.position,
+                UiCamera,
+                out localPos);
+            raycastTargetRectTransform.localPosition = localPos;
+
+            // 画像は移動範囲内に収まるように調整して設定
+            var vec = localPos - (Vector2)defaultPos;
+            var dir = vec.normalized;
+            var mag = vec.magnitude;
+            if (mag > stickRange)
+            {
+                mag = stickRange;
+            }
+            stickVector = mag * dir;
+            stickImageRectTransform.localPosition = defaultPos + (Vector3)stickVector;
+            normalizedStickVector = stickVector.normalized;
+        }
+
+        /// <summary>
+        /// スティック位置をリセット
+        /// </summary>
+        /// <param name="eventData"></param>
+        private void ResetStick(PointerEventData eventData)
+        {
+            raycastTargetRectTransform.localPosition = defaultPos;
+            stickImageRectTransform.localPosition = defaultPos;
+        }
+
+        /// <summary>
         /// 初期化
         /// </summary>
         private void Awake()
@@ -94,38 +140,9 @@ namespace App
             raycastTargetRectTransform = raycastTarget.GetComponent<RectTransform>();
             stickImageRectTransform = stickImage.rectTransform;
 
-            raycastTarget.OnBeginDragEvent.AddListener(eventData =>
-            {
-                defaultPos = raycastTargetRectTransform.localPosition;
-            });
-
-            raycastTarget.OnDragEvent.AddListener(eventData =>
-            {
-                Vector2 localPos;
-                var result = RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                    rectTransform,
-                    eventData.position,
-                    UiCamera,
-                    out localPos);
-                raycastTargetRectTransform.localPosition = localPos;
-
-                var vec = localPos - (Vector2)defaultPos;
-                var dir = vec.normalized;
-                var mag = vec.magnitude;
-                if (mag > stickRange)
-                {
-                    mag = stickRange;
-                }
-                stickVector = mag * dir;
-                stickImageRectTransform.localPosition = defaultPos + (Vector3)stickVector;
-                normalizedStickVector = stickVector.normalized;
-            });
-
-            raycastTarget.OnEndDragEvent.AddListener(eventData =>
-            {
-                raycastTargetRectTransform.localPosition = defaultPos;
-                stickImageRectTransform.localPosition = defaultPos;
-            });
+            raycastTarget.OnBeginDragEvent.AddListener(CacheDefaultPos);
+            raycastTarget.OnDragEvent.AddListener(MoveStick);
+            raycastTarget.OnEndDragEvent.AddListener(ResetStick);
         }
     }
 }
